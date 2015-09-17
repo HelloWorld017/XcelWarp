@@ -1,0 +1,37 @@
+#	\-\     /-/  .          .              . |--|
+#	 \ \   / /   .   /----| .    / /--\ \  . |  |
+#	  \ \ / /    .  /  ---| .   / /----\ \ . |  |
+#	   \   /     . /  /     .   | |------| . |  |
+#	   /   \     . \  \     .   | |        . |  |
+#	  / / \ \    .  \  ---| .   \ \-----|  . |  |
+#	 / /   \ \   .   \----| .    \------|  . |  |
+#	/-/     \-\  .          .              . |--|
+#	          Welcome to Xceled Ngine
+#                   by Khinenw
+#        "Convenient, Stable, yet Extendable"
+#            "This project applies GPLv3"
+
+name: "XcelWarp"
+author: Khinenw
+version: "erita [1.0]"
+description: "Xceled Warp for Xcel Ngien"
+main: org\Khinenw\xcel\XcelWarp
+api: 1.12.0
+depend: [XcelNgien]
+
+permissions:
+  warp.*:
+    description: "The permission for using xcel warp features."
+    default: op
+    children:
+      warp.mk:
+        description: "The permission for making a game warp."
+        default: op
+
+      warp.del:
+        description: "The permission for deleting a game warp."
+        default: op
+
+      warp.join:
+        description: "The permission for entering a game warp."
+        default: true
