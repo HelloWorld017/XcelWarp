@@ -17,6 +17,8 @@
 
 namespace org\Khinenw\xcel;
 
+use Khinenw\XcelUpdater\UpdatePlugin;
+use Khinenw\XcelUpdater\XcelUpdater;
 use org\Khinenw\xcel\event\GameStatusUpdateEvent;
 use org\Khinenw\xcel\event\PlayerRecalculationEvent;
 use pocketmine\event\block\BlockBreakEvent;
@@ -24,18 +26,18 @@ use pocketmine\event\block\SignChangeEvent;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\level\Position;
-use pocketmine\plugin\PluginBase;
 use pocketmine\Server;
 use pocketmine\tile\Sign;
 use pocketmine\utils\TextFormat;
 
-class XcelWarp extends PluginBase implements Listener{
+class XcelWarp extends UpdatePlugin implements Listener{
 
 	public static $warpData = [];
 
 	public function onEnable(){
 		@mkdir($this->getDataFolder());
 
+		XcelUpdater::chkUpdate($this);
 		if(!is_file($this->getDataFolder() . "warp.json")){
 			file_put_contents($this->getDataFolder() . "warp.json", json_encode([]));
 		}
@@ -168,5 +170,13 @@ class XcelWarp extends PluginBase implements Listener{
 				""
 			);
 		}
+	}
+
+	public function compVersion($pluginVersion, $repoVersion){
+		return $pluginVersion !== $repoVersion;
+	}
+
+	public function getPluginYamlURL(){
+		return "https://raw.githubusercontent.com/HelloWorld017/XcelWarp/master/plugin.yml";
 	}
 }
